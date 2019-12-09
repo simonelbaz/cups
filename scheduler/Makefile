@@ -381,7 +381,7 @@ cups-exec:	cups-exec.o
 
 cups-lpd:	cups-lpd.o ../cups/$(LIBCUPS)
 	echo Linking $@...
-	$(LD_CC) $(ALL_LDFLAGS) -o cups-lpd cups-lpd.o $(LINKCUPS)
+	$(LD_CC) -L/lib/amd64 $(ALL_LDFLAGS) -o cups-lpd cups-lpd.o $(LINKCUPS) -lgssapi_krb5 -lkrb5 -lk5crypto -lcom_err   -lz -lpthread -lm -lsocket -lnsl -lrt -lresolv  -lz
 	$(CODE_SIGN) -s "$(CODE_SIGN_IDENTITY)" $@
 
 

@@ -6570,7 +6570,7 @@ fi
 
 
 
-EXPORT_LDFLAGS=""
+EXPORT_LDFLAGS="-L/lib/amd64"
 
 if test "$DSO" != ":"; then
 	# Tell the run-time linkers where to find a DSO.  Some platforms
@@ -6852,7 +6852,7 @@ $as_echo_n "checking whether compiler supports -fPIE... " >&6; }
 		OLDCFLAGS="$CFLAGS"
 		case "$host_os_name" in
 			darwin*)
-				CFLAGS="$CFLAGS -fPIE -Wl,-pie"
+				CFLAGS="$CFLAGS "
 				cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
 
@@ -6866,7 +6866,7 @@ main ()
 _ACEOF
 if ac_fn_c_try_compile "$LINENO"; then :
 
-					PIEFLAGS="-fPIE -Wl,-pie"
+					PIEFLAGS=""
 					{ $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
 $as_echo "yes" >&6; }
 else
@@ -6877,7 +6877,7 @@ rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
 				;;
 
 			*)
-				CFLAGS="$CFLAGS -fPIE -pie"
+				CFLAGS="$CFLAGS "
 				cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
 
@@ -6891,7 +6891,7 @@ main ()
 _ACEOF
 if ac_fn_c_try_compile "$LINENO"; then :
 
-					PIEFLAGS="-fPIE -pie"
+					PIEFLAGS=""
 					{ $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
 $as_echo "yes" >&6; }
 else
@@ -6920,7 +6920,7 @@ rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
 
 	# Additional warning options for development testing...
 	if test -d .git; then
-		WARNING_OPTIONS="-Werror -Wno-error=deprecated-declarations $WARNING_OPTIONS"
+		WARNING_OPTIONS="-Wno-error=deprecated-declarations $WARNING_OPTIONS"
 	fi
 else
 	# Add vendor-specific compiler options...

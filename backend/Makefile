@@ -271,7 +271,8 @@ ipp:	ipp.o ../cups/$(LIBCUPS) libbackend.a
 
 lpd:	lpd.o ../cups/$(LIBCUPS) libbackend.a
 	echo Linking $@...
-	$(LD_CC) $(ALL_LDFLAGS) -o lpd lpd.o libbackend.a $(LINKCUPS)
+	echo "$(LD_CC) -L/lib/amd64 $(ALL_LDFLAGS) -o lpd lpd.o libbackend.a $(LINKCUPS) -lgssapi_krb5 -lkrb5 -lk5crypto -lcom_err   -lz -lpthread -lm -lsocket -lnsl -lrt -lresolv  -lz"
+	$(LD_CC) -L/lib/amd64 $(ALL_LDFLAGS) -o lpd lpd.o libbackend.a $(LINKCUPS) -lgssapi_krb5 -lkrb5 -lk5crypto -lcom_err   -lz -lpthread -lm -lsocket -lnsl -lrt -lresolv  -lz
 	$(CODE_SIGN) -s "$(CODE_SIGN_IDENTITY)" $@
 
 
@@ -281,7 +282,7 @@ lpd:	lpd.o ../cups/$(LIBCUPS) libbackend.a
 
 snmp:	snmp.o ../cups/$(LIBCUPS) libbackend.a
 	echo Linking $@...
-	$(LD_CC) $(ALL_LDFLAGS) -o snmp snmp.o libbackend.a $(LINKCUPS)
+	$(LD_CC) -L/lib/amd64 $(ALL_LDFLAGS) -o snmp snmp.o libbackend.a $(LINKCUPS) -lgssapi_krb5 -lkrb5 -lk5crypto -lcom_err   -lz -lpthread -lm -lsocket -lnsl -lrt -lresolv  -lz
 	$(CODE_SIGN) -s "$(CODE_SIGN_IDENTITY)" $@
 
 
@@ -291,7 +292,7 @@ snmp:	snmp.o ../cups/$(LIBCUPS) libbackend.a
 
 socket:	socket.o ../cups/$(LIBCUPS) libbackend.a
 	echo Linking $@...
-	$(LD_CC) $(ALL_LDFLAGS) -o socket socket.o libbackend.a $(LINKCUPS)
+	$(LD_CC) -L/lib/amd64 $(ALL_LDFLAGS) -o socket socket.o libbackend.a $(LINKCUPS) -lgssapi_krb5 -lkrb5 -lk5crypto -lcom_err   -lz -lpthread -lm -lsocket -lnsl -lrt -lresolv  -lz
 	$(CODE_SIGN) -s "$(CODE_SIGN_IDENTITY)" $@
 
 socket-static:	socket.o  ../cups/$(LIBCUPSSTATIC) libbackend.a
