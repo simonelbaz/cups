@@ -191,6 +191,7 @@ po2strings:	po2strings.o ../cups/$(LIBCUPSSTATIC)
 
 strings2po:	strings2po.o
 	echo Linking $@...
+	echo "$(LD_CC) $(ARCHFLAGS) $(LDFLAGS) -o strings2po strings2po.o"
 	$(LD_CC) $(ARCHFLAGS) $(LDFLAGS) -o strings2po strings2po.o
 	$(CODE_SIGN) -s "$(CODE_SIGN_IDENTITY)" $@
 

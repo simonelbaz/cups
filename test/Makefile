@@ -183,6 +183,7 @@ local:	ippserver ippserver-shared ipptool-static
 
 ippfind:	ippfind.o ../cups/$(LIBCUPS) ../cups/$(LIBCUPSSTATIC)
 	echo Linking $@...
+	echo "$(LD_CC) $(LDFLAGS) -o $@ ippfind.o $(LIBS)"
 	$(LD_CC) $(LDFLAGS) -o $@ ippfind.o $(LIBS)
 	$(CODE_SIGN) -s "$(CODE_SIGN_IDENTITY)" $@
 	echo Linking $@-static...
